@@ -5,12 +5,14 @@ use App\Http\Controllers\TopicController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PdfController;
 
 // Pagrindinis puslapis
 Route::get('/', [TopicController::class, 'index'])->name('topics.index');
 
 //visi route prisijungus
 Route::resource('topics', TopicController::class);
+Route::get('/topics/{topic}/download-pdf', [PdfController::class, 'download'])->name('topics.download.pdf');
 Route::post('/topics/{topic}/add-post', [TopicController::class, 'addPost'])->name('topics.addPost');
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

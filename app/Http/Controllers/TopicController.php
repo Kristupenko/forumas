@@ -21,7 +21,7 @@ class TopicController extends Controller
 
         return view('topics.index', compact('topics'));
     }
-    //sukuria 
+    
     public function create()
     {
         $categories = Category::all();
